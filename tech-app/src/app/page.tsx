@@ -1,14 +1,22 @@
 "use client"
-import Sidebar from "./partials/sidebar"
 import { useState } from "react";
+import Sidebar from "./partials/sidebar"
 
 let Home = () => {
   
   const [showSidebar, setShowSidebar] = useState(false);
+
+
+  const sendData = (data) => {
+    setShowSidebar(data);
+   
+    showSidebar = !showSidebar ? "sm:ml-20" : "sm:ml-64";
+  }
+    
   return (
     <main className="">
-      <Sidebar showSidebar={showSidebar} />
-      <div className="p-4 sm:ml-20">
+      <Sidebar sendData={sendData} />
+      <div className={`p-4 ${showSide } `}>
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">

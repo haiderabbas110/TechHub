@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-let Sidebar = ({showSidebar:boolean}) => {
-    const [showSidebar, setShowSidebar] = useState(false);
+let Sidebar = (props) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const onClick = () => {
+    props.sendData(false);
+    showSidebar && setShowSidebar(!showSidebar);
+  };
 
   return (
     <>
@@ -11,7 +16,7 @@ let Sidebar = ({showSidebar:boolean}) => {
           data-drawer-hide="drawer-navigation"
           aria-controls="drawer-navigation"
           className="text-gray-400 bg-transparent hover:bg-blue-300 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 left-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-          onClick={() => setShowSidebar(!showSidebar)}
+          onClick={onClick}
         >
           <div className="space-y-1.5">
             <div className="w-7 h-0.5 bg-gray-600"></div>
